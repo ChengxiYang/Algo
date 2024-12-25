@@ -14,6 +14,7 @@ public class NumIslands {
 
     private final char VISITED = '2';
 
+    //2024.12.24 重温此题
     public int numIslands(char[][] grid) {
 
         int cnt = 0;

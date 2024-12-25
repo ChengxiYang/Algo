@@ -1,4 +1,4 @@
-package Recursive;
+package BackTrack;
 
 /**
  * N皇后问题的求解

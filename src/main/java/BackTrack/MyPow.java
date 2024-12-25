@@ -1,4 +1,4 @@
-package Recursive;
+package BackTrack;
 
 public class MyPow {
 

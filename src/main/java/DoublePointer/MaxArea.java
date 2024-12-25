@@ -9,6 +9,11 @@ package DoublePointer;
  */
 public class MaxArea {
 
+    /**
+     * 2024年12月25日 重做此题
+     * @param height
+     * @return
+     */
     public int maxArea(int[] height) {
         int left = 0;
         int right = height.length - 1;

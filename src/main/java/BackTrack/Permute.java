@@ -1,5 +1,7 @@
-package Recursive;
+package BackTrack;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -78,5 +80,38 @@ public class Permute {
             path.removeLast();
         }
 
+    }
+
+    /**
+     * 考虑一个空数组，用原数组填充新数组，每种填充方式对应一个解outPut
+     * pos代表当前需要填充的位置，pos之前的位置已经填充好
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> permute2(int[] nums) {
+        List<List<Integer>> resList = new ArrayList<>();
+        List<Integer> outPut = new ArrayList<>();
+        for (int i = 0; i < nums.length; ++i) {
+            outPut.add(nums[i]);
+        }
+        //从pos=0开始填充数组，枚举各种可能的方式
+        track(outPut, 0, resList);
+        return resList;
+    }
+
+    private void track(List<Integer> outPut, int pos, List<List<Integer>> resList) {
+        //已经填充到最后，需要返回，把这个解存入解集中
+        if (pos == outPut.size()) {
+            resList.add(new ArrayList(outPut));
+            return;
+        }
+        for (int i = pos; i < outPut.size(); ++i) {
+            //将原数组位置i的元素填入pos位置中
+            Collections.swap(outPut, pos, i);
+            //递归
+            track(outPut, pos+1, resList);
+            //这里必须要恢复，因为上层循环的父递归调用需要用到原来顺序的outPut，注意所有循环递归调用都是用outPut
+            Collections.swap(outPut, pos, i);
+        }
     }
 }
